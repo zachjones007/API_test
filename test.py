@@ -5,6 +5,7 @@ import uvicorn
 app = FastAPI()
 #how to load up a :8000
 #http://localhost:8080
+#http://localhost:8080/get-by-name
 #http://localhost:8080/docs
 #http://localhost:8080/get-item/1/test
 #uvicorn main:app --port 8086  --reload
@@ -33,3 +34,10 @@ inventory = {
 @app.get("/get-item/{item_id}")
 def get_item(item_id:int, name:str ):
     return inventory[item_id].update
+
+@app.get("/get-by-name")
+def get_item(name:str ):
+    for item_id in inventory:
+        if inventory[item_id]["name"] == name:
+            return inventory[item_id]
+    return {"Date" : "not found"}
