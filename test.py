@@ -6,15 +6,16 @@ app = FastAPI()
 #how to load up a :8000
 #http://localhost:8080
 #uvicorn main:app --port 8086  --reload
+1
 
+#@app.get("/")
+#async def root():
+#   return {"message": "Hello_Wosrl1d"}
 
-@app.get("/")
-async def root():
-    return {"message": "Hello_World"}
 
 
 @app.get("/about")
-def about():
+async def root():
     return{"Data":"about"}
 
 if __name__ == '__main__':
