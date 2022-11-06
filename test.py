@@ -1,12 +1,18 @@
 from fastapi import FastAPI, Path
+import uvicorn
 #https://www.youtube.com/watch?v=-ykeT6kk4bk
 #24:54
 app = FastAPI()
 #how to load up a :8000
-#http://127.0.0.1:8000 
-#uvicorn test:app --reload
+#http://localhost:8080
+#uvicorn main:app --port 8086  --reload
 
-@app.get("/get-item/{item_id}")
-def home():
-    return {"Data":"Test"}
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+
+
+if __name__ == '__main__':
+    uvicorn.run(app, port=8080, host='0.0.0.0')
 
